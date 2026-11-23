@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hiranya AI — Smart Lead Generation & Sales Pipeline</title>
+  <link href="https://googleapis.com" rel="stylesheet">
+  <style>
+    :root {
+      --green-deep: #04221B;
+      --green-card: #073329;
+      --green-surface: #0A4034;
+      --gold: #D4AF37;
+      --gold-bright: #F3D066;
+      --gold-dark: #B59124;
+      --gold-soft: rgba(212, 175, 55, 0.14);
+      --gold-border: rgba(212, 175, 55, 0.35);
+      --text-light: #F8FAFC;
+      --text-muted: #CBD5E1;
+      --white: #FFFFFF;
+      --dark: #06241D;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--green-deep);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(4, 34, 27, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 78px; }
+    .brand {
+      font-size: 1.5rem; font-weight: 800; color: var(--white);
+      text-decoration: none; display: flex; align-items: center; gap: 10px;
+      letter-spacing: -0.02em;
+    }
+    .brand-dot {
+      width: 12px; height: 12px; background: var(--gold);
+      border-radius: 50%; box-shadow: 0 0 12px var(--gold);
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a, .nav-links button {
+      background: none; border: none; font-family: inherit;
+      font-size: 0.95rem; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; cursor: pointer; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links button:hover { color: var(--gold-bright); }
+
+    /* Highlighted Gold Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: inherit; font-weight: 800; font-size: 0.95rem;
+      padding: 13px 24px; border-radius: 10px; border: none; cursor: pointer;
+      transition: all 0.25s ease; text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 55%, var(--gold-dark) 100%);
+      color: #04221B;
+      box-shadow: 0 10px 28px -4px rgba(212, 175, 55, 0.45);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -4px rgba(243, 208, 102, 0.65);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--gold-bright);
+      border: 1.5px solid var(--gold);
+    }
+    .btn-secondary:hover {
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 76px 0 100px;
+      background: radial-gradient(circle at 80% 15%, rgba(212, 175, 55, 0.14) 0%, transparent 48%),
+                  radial-gradient(circle at 10% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 45%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 48px; align-items: center; }
+    .hero-badge {
+      display: inline-block; background: var(--gold-soft); color: var(--gold-bright);
+      border: 1px solid var(--gold-border); font-weight: 700; font-size: 0.8rem;
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .hero h1 {
+      font-size: clamp(2.15rem, 4vw, 3.25rem); font-weight: 800;
+      line-height: 1.15; margin-bottom: 20px; color: var(--white);
+    }
+    .hero p.sub-headline { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 34px; max-width: 580px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 42px; }
+    .hero-actions .btn { padding: 15px 28px; font-size: 1rem; }
+
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      padding-top: 28px; border-top: 1px solid var(--gold-border);
+    }
+    .stat-item strong { display: block; font-size: 1.15rem; font-weight: 800; color: var(--gold-bright); margin-bottom: 4px; }
+    .stat-item span { font-size: 0.92rem; color: var(--text-muted); display: block; }
+
+    /* Pipeline Card */
+    .pipeline-card {
+      background: var(--green-card); border: 1px solid var(--gold-border); border-radius: 20px;
+      padding: 28px; box-shadow: 0 25px 55px -12px rgba(0, 0, 0, 0.55);
+    }
+    .pipeline-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--gold-border);
+    }
+    .pipeline-title { font-size: 0.86rem; font-weight: 800; letter-spacing: 0.09em; color: var(--gold-bright); }
+    .live-indicator {
+      font-size: 0.75rem; font-weight: 700; color: #34D399;
+      background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(52, 211, 153, 0.35);
+      padding: 4px 10px; border-radius: 999px;
+    }
+    .stage-list { display: flex; flex-direction: column; gap: 14px; }
+    .stage-item {
+      background: var(--green-surface); border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: 14px; padding: 16px 18px; transition: all 0.25s ease;
+    }
+    .stage-item:hover {
+      border-color: var(--gold-bright);
+      background: #0D4B3D;
+      transform: translateX(5px);
+    }
+    .stage-tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+      color: #04221B; background: var(--gold-bright); padding: 3px 9px; border-radius: 6px; margin-bottom: 6px;
+    }
+    .stage-item h3 { font-size: 0.98rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .stage-item p { font-size: 0.88rem; color: var(--text-muted); }
+
+    footer {
+      border-top: 1px solid var(--gold-border); padding: 32px 0;
+      background: #031A15; text-align: center; color: var(--text-muted); font-size: 0.9rem;
+    }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(2, 18, 14, 0.82);
+      backdrop-filter: blur(6px); display: none; align-items: center;
+      justify-content: center; padding: 20px; z-index: 1000; overflow-y: auto;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+      border-radius: 50%; border: 1px solid #CBD5E1; background: var(--white);
+      color: var(--dark); font-size: 1.25rem; font-weight: 700; cursor: pointer; z-index: 10;
+    }
+
+    .modal-1-box {
+      background: var(--white); border: 1.5px solid var(--gold); border-radius: 22px;
+      max-width: 980px; width: 100%; overflow: hidden; display: grid;
+      grid-template-columns: 0.92fr 1.08fr; position: relative;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5); margin: auto; color: var(--dark);
+    }
+    .modal-1-left {
+      background: linear-gradient(155deg, #06372C 0%, #031F18 100%);
+      border-right: 1px solid var(--gold-border);
+      color: var(--white); padding: 40px 34px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .modal-1-tag {
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em;
+      background: var(--gold-soft); color: var(--gold-bright); border: 1px solid var(--gold-border);
+      display: inline-block; padding: 5px 12px; border-radius: 6px; margin-bottom: 16px;
+    }
+    .modal-1-left h2 { font-size: 1.7rem; font-weight: 800; line-height: 1.25; margin-bottom: 16px; color: var(--white); }
+    .modal-1-left p.body-copy { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; }
+    .badge-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .benefit-badge {
+      background: rgba(212, 175, 55, 0.12); border: 1px solid var(--gold-border);
+      color: var(--gold-bright); padding: 9px 14px; border-radius: 10px; font-size: 0.9rem; font-weight: 700;
+    }
+    .whatsapp-btn {
+      display: flex; align-items: center; justify-content: center; background: #25D366; color: #FFFFFF;
+      font-weight: 700; font-size: 0.95rem; padding: 13px 18px; border-radius: 10px;
+      text-decoration: none; margin-bottom: 20px;
+    }
+    .contact-info { border-top: 1px solid var(--gold-border); padding-top: 16px; font-size: 0.86rem; color: var(--text-muted); }
+    .contact-info strong { color: var(--gold-bright); }
+
+    .modal-1-right { padding: 40px 36px; background: var(--white); }
+    .modal-1-right h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 20px; padding-right: 28px; color: var(--dark); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { display: block; font-size: 0.83rem; font-weight: 700; margin-bottom: 6px; color: var(--dark); }
+    .form-group input, .form-group select {
+      width: 100%; padding: 11px 13px; border: 1.5px solid #CBD5E1;
+      border-radius: 9px; font-family: inherit; font-size: 0.92rem; color: var(--dark);
+    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold-dark); }
+    .form-submit { width: 100%; padding: 14px; font-size: 1rem; margin-top: 6px; }
+    .success-msg {
+      display: none; background: #DCFCE7; color: #166534; padding: 14px;
+      border-radius: 10px; font-weight: 600; font-size: 0.92rem; margin-top: 14px; text-align: center;
+    }
+
+    .modal-2-box {
+      background: var(--green-card); border: 1.5px solid var(--gold); border-radius: 22px;
