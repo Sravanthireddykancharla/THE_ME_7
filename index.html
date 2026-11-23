@@ -1,211 +1,189 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hiranya AI — Smart Lead Generation & Sales Pipeline</title>
-  <link href="https://googleapis.com" rel="stylesheet">
-  <style>
-    :root {
-      --green-deep: #04221B;
-      --green-card: #073329;
-      --green-surface: #0A4034;
-      --gold: #D4AF37;
-      --gold-bright: #F3D066;
-      --gold-dark: #B59124;
-      --gold-soft: rgba(212, 175, 55, 0.14);
-      --gold-border: rgba(212, 175, 55, 0.35);
-      --text-light: #F8FAFC;
-      --text-muted: #CBD5E1;
-      --white: #FFFFFF;
-      --dark: #06241D;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--green-deep);
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+<body>
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="brand"><span class="brand-dot"></span>Hiranya AI</a>
+      <ul class="nav-links">
+        <li><button type="button" onclick="openModal('modal2')">How It Works</button></li>
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><button type="button" onclick="openModal('modal1')">Free Growth Audit</button></li>
+      </ul>
+      <button type="button" class="btn btn-primary" onclick="openModal('modal1')">Claim your free growth audit</button>
+    </div>
+  </header>
 
-    /* Header */
-    header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(4, 34, 27, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gold-border);
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 78px; }
-    .brand {
-      font-size: 1.5rem; font-weight: 800; color: var(--white);
-      text-decoration: none; display: flex; align-items: center; gap: 10px;
-      letter-spacing: -0.02em;
-    }
-    .brand-dot {
-      width: 12px; height: 12px; background: var(--gold);
-      border-radius: 50%; box-shadow: 0 0 12px var(--gold);
-    }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav-links a, .nav-links button {
-      background: none; border: none; font-family: inherit;
-      font-size: 0.95rem; font-weight: 600; color: var(--text-muted);
-      text-decoration: none; cursor: pointer; transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links button:hover { color: var(--gold-bright); }
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">AI-Powered B2B Outbound Engine</div>
+        <h1>Hiranya AI: Smart lead generation that keeps your sales pipeline full.</h1>
+        <p class="sub-headline">
+          Our intelligent AI agents identify your ideal decision-makers, craft hyper-personalized LinkedIn and email outreach, and handle automated follow-ups—delivering qualified sales meetings straight to your calendar without paid ads.
+        </p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary" onclick="openModal('modal1')">Claim your free growth audit →</button>
+          <button type="button" class="btn btn-secondary" onclick="openModal('modal2')">See how it works</button>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <strong>5–7 days</strong>
+            <span>to first qualified leads for most clients</span>
+          </div>
+          <div class="stat-item">
+            <strong>100% organic outreach · No paid ads required</strong>
+            <span>pure LinkedIn &amp; email engine with zero ad spend</span>
+          </div>
+        </div>
+      </div>
 
-    /* Highlighted Gold Buttons */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      font-family: inherit; font-weight: 800; font-size: 0.95rem;
-      padding: 13px 24px; border-radius: 10px; border: none; cursor: pointer;
-      transition: all 0.25s ease; text-decoration: none;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 55%, var(--gold-dark) 100%);
-      color: #04221B;
-      box-shadow: 0 10px 28px -4px rgba(212, 175, 55, 0.45);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 32px -4px rgba(243, 208, 102, 0.65);
-    }
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--gold-bright);
-      border: 1.5px solid var(--gold);
-    }
-    .btn-secondary:hover {
-      background: var(--gold-soft);
-      transform: translateY(-2px);
-    }
+      <div class="pipeline-card" id="pipeline">
+        <div class="pipeline-header">
+          <span class="pipeline-title">HIRANYA AI PIPELINE</span>
+          <span class="live-indicator">● Active Engine</span>
+        </div>
+        <div class="stage-list">
+          <div class="stage-item">
+            <span class="stage-tag">Stage 01</span>
+            <h3>Ideal Buyer &amp; Territory Research</h3>
+            <p>Finds verified decision-makers &amp; live buying signals</p>
+          </div>
+          <div class="stage-item">
+            <span class="stage-tag">Stage 02</span>
+            <h3>Hyper-Personalized LinkedIn &amp; Email Outreach</h3>
+            <p>Sends tailored, human-like messages—no spam</p>
+          </div>
+          <div class="stage-item">
+            <span class="stage-tag">Stage 03</span>
+            <h3>Smart Automated Follow-Ups</h3>
+            <p>Nurtures warm prospects across 4+ touchpoints</p>
+          </div>
+          <div class="stage-item">
+            <span class="stage-tag">Stage 04</span>
+            <h3>Ready Buyers Land on Your Calendar</h3>
+            <p>Qualified sales meetings booked in 5–7 days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    /* Hero Section */
-    .hero {
-      padding: 76px 0 100px;
-      background: radial-gradient(circle at 80% 15%, rgba(212, 175, 55, 0.14) 0%, transparent 48%),
-                  radial-gradient(circle at 10% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 45%);
-    }
-    .hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 48px; align-items: center; }
-    .hero-badge {
-      display: inline-block; background: var(--gold-soft); color: var(--gold-bright);
-      border: 1px solid var(--gold-border); font-weight: 700; font-size: 0.8rem;
-      padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .hero h1 {
-      font-size: clamp(2.15rem, 4vw, 3.25rem); font-weight: 800;
-      line-height: 1.15; margin-bottom: 20px; color: var(--white);
-    }
-    .hero p.sub-headline { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 34px; max-width: 580px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 42px; }
-    .hero-actions .btn { padding: 15px 28px; font-size: 1rem; }
+  <footer>
+    <div class="container">© 2026 Hiranya AI. All rights reserved. · hello@hiranyaai.com</div>
+  </footer>
 
-    .stats-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-      padding-top: 28px; border-top: 1px solid var(--gold-border);
-    }
-    .stat-item strong { display: block; font-size: 1.15rem; font-weight: 800; color: var(--gold-bright); margin-bottom: 4px; }
-    .stat-item span { font-size: 0.92rem; color: var(--text-muted); display: block; }
+  <div class="modal-overlay" id="modal1" onclick="backdropClose(event, 'modal1')">
+    <div class="modal-1-box">
+      <button type="button" class="modal-close" onclick="closeModal('modal1')">×</button>
+      <div class="modal-1-left">
+        <div>
+          <span class="modal-1-tag">FREE GROWTH AUDIT</span>
+          <h2>Are enough ready buyers landing on your sales calendar?</h2>
+          <p class="body-copy">
+            Your ideal customers are already out there—they just need the right outreach. Tell us what business you run and what kind of buyers you want to reach—Hiranya AI will audit your market and show you exact decision-makers ready to talk in the next 5–7 days—with zero ad spend.
+          </p>
+          <div class="badge-list">
+            <div class="benefit-badge">✓ 100% Organic Outreach</div>
+            <div class="benefit-badge">✓ No Paid Ads Required</div>
+          </div>
+        </div>
+        <div>
+          <a href="https://wa.me." target="_blank" class="whatsapp-btn">
+            Prefer WhatsApp? Chat with us
+          </a>
+          <div class="contact-info">
+            <div><strong>CALL:</strong> +91 [Your Phone Number]</div>
+            <div><strong>EMAIL:</strong> hello@hiranyaai.com</div>
+          </div>
+        </div>
+      </div>
 
-    /* Pipeline Card */
-    .pipeline-card {
-      background: var(--green-card); border: 1px solid var(--gold-border); border-radius: 20px;
-      padding: 28px; box-shadow: 0 25px 55px -12px rgba(0, 0, 0, 0.55);
-    }
-    .pipeline-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--gold-border);
-    }
-    .pipeline-title { font-size: 0.86rem; font-weight: 800; letter-spacing: 0.09em; color: var(--gold-bright); }
-    .live-indicator {
-      font-size: 0.75rem; font-weight: 700; color: #34D399;
-      background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(52, 211, 153, 0.35);
-      padding: 4px 10px; border-radius: 999px;
-    }
-    .stage-list { display: flex; flex-direction: column; gap: 14px; }
-    .stage-item {
-      background: var(--green-surface); border: 1px solid rgba(212, 175, 55, 0.22);
-      border-radius: 14px; padding: 16px 18px; transition: all 0.25s ease;
-    }
-    .stage-item:hover {
-      border-color: var(--gold-bright);
-      background: #0D4B3D;
-      transform: translateX(5px);
-    }
-    .stage-tag {
-      display: inline-block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
-      color: #04221B; background: var(--gold-bright); padding: 3px 9px; border-radius: 6px; margin-bottom: 6px;
-    }
-    .stage-item h3 { font-size: 0.98rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .stage-item p { font-size: 0.88rem; color: var(--text-muted); }
+      <div class="modal-1-right">
+        <h3>Tell us about your business &amp; what you need</h3>
+        <form onsubmit="handleFormSubmit(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label>Work Email *</label>
+              <input type="email" placeholder="john@company.com" required />
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp Number *</label>
+              <input type="tel" placeholder="+91 98765 43210" required />
+            </div>
+            <div class="form-group">
+              <label>Company Name / Website URL *</label>
+              <input type="text" placeholder="https://yourcompany.com" required />
+            </div>
+            <div class="form-group full">
+              <label>What type of business do you operate? *</label>
+              <select required>
+                <option value="" disabled selected>Select your business type</option>
+                <option>SaaS / Tech Product</option>
+                <option>IT Services &amp; Software Development</option>
+                <option>B2B Marketing / Creative Agency</option>
+                <option>Consulting / Corporate Training</option>
+                <option>Recruitment &amp; Staffing</option>
+                <option>Logistics / Manufacturing</option>
+                <option>Financial / Legal Advisory</option>
+                <option>Other B2B Business</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>What do you want Hiranya AI to help you achieve? *</label>
+              <select required>
+                <option value="" disabled selected>Select your primary goal</option>
+                <option>Book 10–20+ Qualified B2B Sales Meetings / Month</option>
+                <option>Get a Targeted List of Ready Buyers in My Niche</option>
+                <option>Lock My Exclusive Territory / Micro-Market</option>
+                <option>Automate LinkedIn &amp; Cold Email Outreach (Zero Ad Spend)</option>
+                <option>Complete Done-For-You Sales Pipeline Setup</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Claim My Free Growth Audit →</button>
+          <div class="success-msg" id="formSuccess">Thank you! Your Free Growth Audit request has been received.</div>
+        </form>
+      </div>
+    </div>
+  </div>
 
-    footer {
-      border-top: 1px solid var(--gold-border); padding: 32px 0;
-      background: #031A15; text-align: center; color: var(--text-muted); font-size: 0.9rem;
-    }
+  <div class="modal-overlay" id="modal2" onclick="backdropClose(event, 'modal2')">
+    <div class="modal-2-box">
+      <button type="button" class="modal-close" onclick="closeModal('modal2')">×</button>
+      <span class="modal-2-tag">HOW HIRANYA AI WORKS</span>
+      <h2>From Zero Outreach to Qualified Sales Meetings in 5–7 Days.</h2>
+      <div class="steps-container">
+        <div class="step-card">
+          <h4><span>Step 01:</span> Ideal Buyer &amp; Territory Research</h4>
+          <p>We analyze your offer, define your Ideal Customer Profile (ICP), and scan live buying signals to build a verified list of decision-makers in your target market.</p>
+        </div>
+        <div class="step-card">
+          <h4><span>Step 02:</span> Hyper-Personalized LinkedIn &amp; Email Outreach</h4>
+          <p>Our AI agents write and send tailored, human-like messages to every prospect across LinkedIn and cold email—no generic templates, no spam.</p>
+        </div>
+        <div class="step-card">
+          <h4><span>Step 03:</span> Smart Automated Follow-Ups</h4>
+          <p>Most B2B deals happen after the 4th touchpoint. Hiranya AI automatically nurtures warm prospects, answers initial queries, and keeps your brand top-of-mind.</p>
+        </div>
+        <div class="step-card">
+          <h4><span>Step 04:</span> Ready Buyers Land on Your Calendar</h4>
+          <p>Once a prospect shows genuine interest, we qualify them and book the meeting straight onto your sales calendar—ready for you to close.</p>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" style="width:100%; padding:15px;" onclick="switchModal()">
+        Claim your free growth audit →
+      </button>
+    </div>
+  </div>
 
-    /* Modals */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(2, 18, 14, 0.82);
-      backdrop-filter: blur(6px); display: none; align-items: center;
-      justify-content: center; padding: 20px; z-index: 1000; overflow-y: auto;
-    }
-    .modal-overlay.active { display: flex; }
-    .modal-close {
-      position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
-      border-radius: 50%; border: 1px solid #CBD5E1; background: var(--white);
-      color: var(--dark); font-size: 1.25rem; font-weight: 700; cursor: pointer; z-index: 10;
-    }
-
-    .modal-1-box {
-      background: var(--white); border: 1.5px solid var(--gold); border-radius: 22px;
-      max-width: 980px; width: 100%; overflow: hidden; display: grid;
-      grid-template-columns: 0.92fr 1.08fr; position: relative;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5); margin: auto; color: var(--dark);
-    }
-    .modal-1-left {
-      background: linear-gradient(155deg, #06372C 0%, #031F18 100%);
-      border-right: 1px solid var(--gold-border);
-      color: var(--white); padding: 40px 34px; display: flex; flex-direction: column; justify-content: space-between;
-    }
-    .modal-1-tag {
-      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em;
-      background: var(--gold-soft); color: var(--gold-bright); border: 1px solid var(--gold-border);
-      display: inline-block; padding: 5px 12px; border-radius: 6px; margin-bottom: 16px;
-    }
-    .modal-1-left h2 { font-size: 1.7rem; font-weight: 800; line-height: 1.25; margin-bottom: 16px; color: var(--white); }
-    .modal-1-left p.body-copy { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 24px; }
-    .badge-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-    .benefit-badge {
-      background: rgba(212, 175, 55, 0.12); border: 1px solid var(--gold-border);
-      color: var(--gold-bright); padding: 9px 14px; border-radius: 10px; font-size: 0.9rem; font-weight: 700;
-    }
-    .whatsapp-btn {
-      display: flex; align-items: center; justify-content: center; background: #25D366; color: #FFFFFF;
-      font-weight: 700; font-size: 0.95rem; padding: 13px 18px; border-radius: 10px;
-      text-decoration: none; margin-bottom: 20px;
-    }
-    .contact-info { border-top: 1px solid var(--gold-border); padding-top: 16px; font-size: 0.86rem; color: var(--text-muted); }
-    .contact-info strong { color: var(--gold-bright); }
-
-    .modal-1-right { padding: 40px 36px; background: var(--white); }
-    .modal-1-right h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 20px; padding-right: 28px; color: var(--dark); }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-group { margin-bottom: 12px; }
-    .form-group.full { grid-column: 1 / -1; }
-    .form-group label { display: block; font-size: 0.83rem; font-weight: 700; margin-bottom: 6px; color: var(--dark); }
-    .form-group input, .form-group select {
-      width: 100%; padding: 11px 13px; border: 1.5px solid #CBD5E1;
-      border-radius: 9px; font-family: inherit; font-size: 0.92rem; color: var(--dark);
-    }
-    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold-dark); }
-    .form-submit { width: 100%; padding: 14px; font-size: 1rem; margin-top: 6px; }
-    .success-msg {
-      display: none; background: #DCFCE7; color: #166534; padding: 14px;
-      border-radius: 10px; font-weight: 600; font-size: 0.92rem; margin-top: 14px; text-align: center;
-    }
-
-    .modal-2-box {
-      background: var(--green-card); border: 1.5px solid var(--gold); border-radius: 22px;
+  <script>
+    function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
+    function switchModal() { closeModal('modal2'); openModal('modal1'); }
+    function backdropClose(e, id) { if (e.target.id === id) closeModal(id); }
+    function handleFormSubmit(e) { e.preventDefault(); document.getElementById('formSuccess').style.display = 'block'; e.target.reset(); }
+  </script>
+</body>
+</html>
